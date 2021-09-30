@@ -1,6 +1,8 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { handleLogin, isLoggedIn } from "../services/auth"
+import Form from "./Form"
+import View from "./View"
+import { handleLogin, isLoggedIn } from "../utils/auth"
 
 class Login extends React.Component {
   state = {
@@ -8,13 +10,13 @@ class Login extends React.Component {
     password: ``,
   }
 
-  handleUpdate = event => {
+  handleUpdate(event) {
     this.setState({
       [event.target.name]: event.target.value,
     })
   }
 
-  handleSubmit = event => {
+  handleSubmit(event) {
     event.preventDefault()
     handleLogin(this.state)
   }
@@ -25,30 +27,12 @@ class Login extends React.Component {
     }
 
     return (
-      <>
-        <h1>Log in</h1>
-        <form
-          method="post"
-          onSubmit={event => {
-            this.handleSubmit(event)
-            navigate(`/app/profile`)
-          }}
-        >
-          <label>
-            Username
-            <input type="text" name="username" onChange={this.handleUpdate} />
-          </label>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              onChange={this.handleUpdate}
-            />
-          </label>
-          <input type="submit" value="Log In" />
-        </form>
-      </>
+      <View title="Log In">
+        <Form
+          handleUpdate={e => this.handleUpdate(e)}
+          handleSubmit={e => this.handleSubmit(e)}
+        />
+      </View>
     )
   }
 }

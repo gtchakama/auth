@@ -1,0 +1,23 @@
+.status {
+    background: lightgrey;
+    font-size: 87.5%;
+    padding: 0.25rem;
+  }
+  
+  .status__text {
+    margin: 0 auto;
+    max-width: 640px;
+    text-align: right;
+  }
+  
+  .status__logout {
+    margin: 0 5px;
+    padding: 2px 5px;
+    text-decoration: none;
+    font-weight:bold ;
+    color: #48aa8b;
+  } 
+  .status__logout:hover{
+    color: rgb(0, 119, 255);
+    transition-duration: 1s;
+  }

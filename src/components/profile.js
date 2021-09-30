@@ -1,14 +1,19 @@
 import React from "react"
-import { getUser } from "../services/auth"
+import View from "./View"
+import { getCurrentUser } from "../utils/auth"
 
-const Profile = () => (
-  <>
-    <h1>Your profile</h1>
-    <ul>
-      <li>Name: {getUser().name}</li>
-      <li>E-mail: {getUser().email}</li>
-    </ul>
-  </>
-)
+const Profile = () => {
+  const { name } = getCurrentUser()
+
+  return (
+    <View title="Your Profile ">
+      <p>Welcome back to your profile, {name}!</p>
+      <p>
+        This is a client-only route. You could set up some awesome tools for the
+        user on this page.
+      </p>
+    </View>
+  )
+}
 
 export default Profile

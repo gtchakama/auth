@@ -1,26 +1,24 @@
 import React from "react"
 import { Link } from "gatsby"
-import { getUser, isLoggedIn } from "../services/auth"
+import Layout from "../components/Layout"
+import View from "../components/View"
+import Status from "../components/Status"
 
-import Layout from "../components/layout"
-
-export default function Home() {
-  return (
-    <Layout>
-      <h1>Hello {isLoggedIn() ? getUser().name : "world"}!</h1>
+const Index = () => (
+  <Layout>
+    <Status />
+    <View title="App-Auth">
       <p>
-        {isLoggedIn() ? (
-          <>
-            You are logged in, so check your{" "}
-            <Link to="/app/profile">profile</Link>
-          </>
-        ) : (
-          <>
-            You should <Link to="/app/login">log in</Link> to see restricted
-            content
-          </>
-        )}
+        This is a demonstration of an app that uses auth. Its a starter for
+        projects that might require auth.
       </p>
-    </Layout>
-  )
-}
+      <p>
+        For the full experience, go to
+        {` `}
+        <Link to="/app/profile">your profile</Link>.
+      </p>
+    </View>
+  </Layout>
+)
+
+export default Index
